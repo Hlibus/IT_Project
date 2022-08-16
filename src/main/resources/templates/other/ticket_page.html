@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Картка</title>
+</head>
+<body>
+    
+<!-- SELECT LANGUAGE INTERFACE MODAL BLOCK -->
+<div id="lngModal" class="lng-modal">
+    
+    <div class="lng-modal-content">
+        <div class="lng-modal-header">
+            <span onclick="setDisplayNone('lngModal')" class="close">&times;</span>
+            <h2>Змінити мову</h2>
+        </div>
+        <div class="lng-modal-body">
+            <div class="model-lng-btn-group">
+                <button class="model-lng-btn"><h1 class="model-lng-btn-txt">English</h1></button>
+                <button class="model-lng-btn"><h1 class="model-lng-btn-txt">Ukranian</h1></button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<header class="header-reg-aut">
+    <div class="top-panel-div">
+        <ul class="top-panel-ul">
+            <li class="top-panel-li">
+                <a th:href="@{'/page_after_login/' + ${userId}}"><button class="top-panel-btn" ><h1 class="top-panel-h1">Головна</h1></button></a>
+            </li>
+        </ul>
+    </div>
+    <div class="header-btn-div-main-right">
+        <button class="user-menu-btn">Settings</button>
+        <button class="lng-btn" onclick="setDisplayBlock('lngModal')"><i class="fa fa-language" aria-hidden="true"></i></button>
+        <a th:href="@{'/'}" class="user-menu-btn" style="text-decoration: none;">Exit</a>
+    </div>
+</header>
+
+
+ <!-- EDIT COLUMN DATA MODAL BLOCK-->
+ <form th:method="POST" th:action="@{'/table_page/'+ ${userId} + '/' + ${tableId} + '/editColumn' }" th:object="${editedColumn}">
+    <div id="editColumnModal" class="add-modal">
+        <div class="add-modal-content">
+            <div class="add-modal-head">
+                <span onclick="setDisplayNone('editColumnModal')" class="close">&times;</span>
+                <h2 style="margin-left:auto;">Редагувати колонку</h2>
+            </div>
+            <hr>
+            <div class="add-modal-fields">
+                <ul class="add-modal-name-group">
+                    <li class="add-modal-name-element">
+                        name
+                    </li>
+                </ul>
+                <ul class="add-modal-field-group">
+                    <li class="add-modal-field-element">
+                        <input type="text" class="input-fields" name="name">
+                    </li>
+                </ul>
+            </div>
+            <hr>
+            <div class="add-modal-btns">
+                <button onclick="setDisplayNone('editColumnModal')" class="edit-btn" type="button">
+                    Відміна
+                </button>
+                <button class="edit-btn" type="button">
+                    Видалити
+                </button>
+                <button class="edit-btn" type="submit">
+                    Змінити
+                </button>
+            </div>
+        </div>
+    </div>
+    </form>
+
+
+<div class="table-page-head-menu">
+    <ul class="table-page-head-menu-button-list">
+        <li>
+            <button onclick="setDisplayBlock('editColumnModal')" class="table-page-head-menu-button">
+                Редагувати колонку
+            </button>
+        </li>
+    </ul>
+</div>
+
+<div class="ticket-main-div">
+    <h1>Назва картки</h1>
+    <hr>
+    <div class="ticket-info-div">
+        <h2>Інформація картки</h2>
+        <div class="ticket-text-info">
+
+        </div>
+        <hr style="margin: 0;">
+        <h2>Виконавці</h2>
+        <div class="ticket-users">
+
+        </div>
+    </div>
+    <hr>
+    <h2>Оцінювання картки</h2>
+    <div class="ticket-marking">
+
+    </div>
+    <hr>
+    <h3>Завантаження файлу</h3>
+    <div class="ticket-file-div">
+
+    </div>
+    <hr>
+    <h3>Коментарі</h3>
+    <div class="ticket-comments-div">
+
+    </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link th:href="@{tempates/css/styles.css}" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <title>Авторизація</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+    <div id="lngModal" class="lng-modal">
+
+        <div class="lng-modal-content">
+            <div class="lng-modal-header">
+                <span onclick="setDisplayNone('lngModal')" class="close">&times;</span>
+                <h2>Змінити мову</h2>
+            </div>
+            <div class="lng-modal-body">
+                <div class="model-lng-btn-group">
+                    <button class="model-lng-btn"><h1 class="model-lng-btn-txt">English</h1></button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <header class="header-reg-aut">
+        <div class="top-panel-div">
+            <ul class="top-panel-ul">
+                <li class="top-panel-li">
+                    <!-- <button class="top-panel-btn"><h1 class="top-panel-h1">Головна</h1></button> -->
+                </li>
+            </ul>
+        </div>
+        <div class="header-btn-div-main-right">
+            <!-- <button class="user-menu-btn">Settings</button> -->
+            <button class="lng-btn" onclick="setDisplayBlock('lngModal')"><i class="fa fa-language" aria-hidden="true"></i></button>
+        </div>
+    </header>
+
+
+    <form th:method="POST" th:action="@{/login}" th:object="${loginPass}">
+        <div class="aut-main">
+            <h1 class="title title-aut">Авторизація</h1>
+
+            <div class="input-main">
+                <div class="input-name-div">
+                    <ul>
+                        <li class="input-txt-li">
+                            <h2 class="input-txt">Пошта</h2>
+                        </li>
+                        <li class="input-txt-li">
+                            <h2 class="input-txt">Пароль</h2>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="input-fields-div">
+                    <ul>
+                        <li class="input-fields-li">
+                            <input class="input-fields" th:field="*{email}" type="email"
+                                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="test1@gmail.com">
+                        </li>
+                        <li class="input-fields-li">
+                            <input type="password" class="input-fields" th:field="*{pass}" >
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="buttons-div">
+                <button class="button button-aut" type="submit">
+                    <h3 class="button-txt">Увійти</h3>
+                </button>
+                <h4 class="link-aut button-link-txt">Або <a href="/registration" class="link button-link">зареєструйтеся</a></h4>
+            </div>
+        </div>
+    </form>
+
+    <footer>
+
+        <!--Waves Container-->
+        <div>
+            <svg class="waves"
+                viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                    <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="parallax">
+                    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(75,126,245,0.7" />
+                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                    <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+                </g>
+            </svg>
+        </div>
+        <!--Waves end-->
+
+        <div class="content-flex">
+            <p>Diplom 2022 | By Gleb Parkhomenko </p>
+        </div>
+        
+    </footer>
+
+</body>
+
+
+<script type="text/javascript" th:src="@{templates/js/script.js}"> </script>
+<script src="js/script.js"></script>
+</html>

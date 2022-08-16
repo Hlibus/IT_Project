@@ -1,0 +1,1021 @@
+body{
+    background-color: #E1E1E1;
+    font-family: 'Montserrat';
+    font-style: normal;
+}
+
+li {
+    list-style-type: none;
+}
+  
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: rgba(255, 255, 255, 0.0);
+  }
+
+
+
+/* HEADER HEADER HEADER HEADER HEADER HEADER HEADER HEADER HEADER HEADER HEADER HEADER HEADER HEADER HEADER HEADER  */
+
+.header-reg-aut{
+    margin: 0;
+    background-color: #ffffff;
+    height: 109px;
+    width: 100%;
+    min-width: 706px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: row;
+}
+
+.top-panel-div{
+    width: 70%;
+}
+
+.top-panel-ul{
+    display: flex;
+    flex-direction: row;
+}
+
+.top-panel-li{
+    margin: 0;
+    padding: 0;
+}
+
+.top-panel-btn{
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    border: none;
+    padding: 28.8px 20px;
+}
+
+.top-panel-btn:hover{
+    background-color: #E1E1E1;
+}
+
+.top-panel-h1{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+/* Кнопка смены языка */
+
+.lng-btn-div-reg-aut{
+    margin-left:calc(100% - 66.3px - 20px);
+}
+
+.header-btn-div-main-right{
+    margin-left:calc(30% - 66.3px - 20px);
+    display: flex;
+    flex-direction: row;
+}
+
+.user-menu-btn{
+    background-color: #ffffff;
+    border: none;
+    color: #4F4F4F;
+    padding: 35.3px 16px;
+    cursor: pointer;
+    font-size: 22px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.user-menu-btn:hover{
+    background-color: #E1E1E1;
+}
+
+.lng-btn {
+    background-color: #ffffff;
+    border: none;
+    color: #4F4F4F;
+    padding: 31.5px 16px;
+    font-size: 40px;
+    cursor: pointer;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Darker background on mouse-over */
+.lng-btn:hover {
+    background-color: #E1E1E1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Главный блок АВТОРИЗАЦИИ*/
+.aut-main{ 
+    margin: auto;
+    margin-top: 160px;
+    margin-bottom: 160px;
+    width: 706px;
+    background-color: #FFFFFF;
+    opacity: 0.7;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* ТИТУЛКА для блока */
+.title{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 39px;
+    padding-top: 11px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.title-aut{
+    margin: 10px 249px 20px 249px;
+}
+
+/* Раздел ВВОДА информации */
+
+.input-main{
+    display: flex;
+    flex-direction: row;
+}
+
+/* Раздел с НАЗВАНИЯМИ полей */
+
+.input-name-div{
+    width: 265px;
+    height: 143px;
+}
+
+.input-txt{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    margin: 0;
+    padding: 0;
+}
+
+.input-txt-li{
+    padding-left: 85px;
+    padding-top: 30px;
+}
+
+/* Раздел ПОЛЕЙ ввода */
+
+.input-fields-div{
+    width: 441px;
+    height: 143px;
+}
+
+.input-fields{
+    margin: 0;
+    width: 305px;
+    height: 40px;
+    box-sizing: border-box;
+    border: 1px solid #000000;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+}
+
+.input-fields-li{
+    padding-top: 19px;
+}
+
+/* Раздел с КНОПКАМИ АВТОРИЗАЦИИ*/
+
+.buttons-div{
+    margin-top: 19px;
+    margin-left: 124px;
+    padding-bottom: 41px;
+}
+
+.button{
+    background-color: #E1E1E1;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    border: none;
+    padding: 13px 32px;
+}
+
+.button:hover{
+    background-color: #ffffff;
+}
+
+.button-aut{
+    margin-top: 31px;
+    margin-left: 173px;
+}
+
+.button-txt{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    margin: 0;
+    padding: 0;
+}
+
+.button-link-txt{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.link{
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    
+}
+
+.link:hover {
+    color: rgb(46, 129, 95);
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+.link:link{
+    color: aqua;
+}
+
+.link-aut{
+    margin: 0;
+    margin-top: 26px;
+    margin-left: 150px;
+}
+
+
+/* Главный блок РЕЄСТРАЦІЇ*/
+.reg-main{ 
+    margin: auto;
+    margin-top: 95px;
+    margin-bottom: 75px;
+    width: 706px;
+    background-color: #FFFFFF;
+    opacity: 0.7;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* РЕЄСТРАЦІЯ РЕЄСТРАЦІЯ РЕЄСТРАЦІЯ РЕЄСТРАЦІЯ РЕЄСТРАЦІЯ РЕЄСТРАЦІЯ РЕЄСТРАЦІЯ РЕЄСТРАЦІЯ  */
+
+.title-reg{
+    margin: 10px 261px 20px 261px;
+}
+
+/* Раздел с КНОПКАМИ РЕЄСТРАЦІЇ*/
+
+.buttons-div{
+    margin-top: 0px;
+    margin-left: 124px;
+    padding-bottom: 41px;
+}
+
+.button-reg{
+    margin-top: 31px;
+    margin-left: 126px;
+}
+
+.link-reg{
+    margin: 0;
+    margin-top: 28px;
+    margin-left: 168px;
+}
+
+/* Раздел с НАЗВАНИЯМИ полей */
+
+.input-name-reg-div{
+    width: 335px;
+    height: 210px;
+}
+
+.input-txt-reg-li{
+    padding-left: 70px;
+    padding-top: 31px;
+}
+
+/* Раздел ПОЛЕЙ ввода */
+
+.input-fields-reg-div{
+    width: 372px;
+    height: 210px;
+}
+
+
+
+
+
+
+
+
+/* ADD NEW COLUMN MODAL DIV (TABLE_PAGE) */
+
+.add-modal{
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 100px; 
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+}
+
+.add-modal-head{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.add-modal-content,
+.add-and-delete-users{
+    position: relative;
+    background-color: #ffffff;
+    margin: auto;
+    margin-top: 150px;
+    padding: 0;
+    border: 0;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    max-width: 600px;
+    min-width: 600px;
+    padding: 10px;
+}
+
+.add-and-delete-users{
+    
+    min-width: 1200px;
+}
+
+.list-of-added-users-content{
+    min-width: 180px;
+}
+
+.edit-page-content{
+    margin-left: 0;
+    padding-left: 0;
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.list-of-added-users{
+    max-width: 400px;
+    max-height: 200px;
+    word-wrap: break-word;
+    overflow-y: auto;
+}
+
+.add-modal-fields{
+    display: flex;
+    flex-direction: row;
+    padding: 50px;
+}
+
+.add-modal-fields-usrs{
+    display: flex;
+    flex-direction: row;
+    padding: 30px;
+    padding-left: 0;
+}
+
+.add-modal-field-element{
+    margin-top: 25px;
+}
+
+.add-modal-name-element{
+    margin-top: 27px;
+    font-size: 26px;
+    width: 210px;
+}
+
+.add-modal-name-group{
+    padding-bottom: 20px;
+}
+
+.add-modal-field-group{
+    margin-left:20px;
+    padding-bottom: 20px;
+}
+
+.add-modal-btns{
+    display: flex;
+    flex-direction: row;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.add-btn{
+    padding: 20px;
+    margin-left: 130px;
+    font-size: 20px;
+}
+
+.edit-btn{
+    padding: 20px;
+    margin-left: 50px;
+    font-size: 20px;
+}
+
+
+/* Модальное окно для смены языка на странице */
+
+.lng-modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+
+}
+
+.lng-modal-content {
+    position: relative;
+    background-color: #ffffff;
+    margin: auto;
+    padding: 0;
+    border: 0;
+    max-width: 500px;
+    min-width: 500px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+
+.close {
+    color: rgb(0, 0, 0);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.lng-modal-header {
+    padding: 12px 26px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    max-width: 500px;
+    min-width: 300px;
+}
+
+.lng-modal-body {
+    max-width: 500px;
+    min-width: 300px;
+    max-height: 360px;
+    min-height: 100px;
+    padding: 20px 46px;
+    padding-bottom: 40px;
+    background-color: #E1E1E1;
+    overflow-x:hidden;
+}
+
+.model-lng-btn{
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.model-lng-btn-txt{
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.model-lng-btn-group .model-lng-btn{
+    background-color: #ffffff;
+    border: 1px solid;
+    display: inline-block;
+    cursor: pointer;
+    width: 250px;
+    display: block;
+}
+
+.model-lng-btn-group .model-lng-btn:hover {
+    background-color: #E1E1E1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* WAWES WAWES WAWES WAWES WAWES WAWES WAWES WAWES WAWES WAWES WAWES WAWES WAWES WAWES WAWES WAWES WAWES WAWES WAWES WAWES WAWES WAWES  */
+
+.waves {
+    position:relative;
+    width: 100%;
+    min-width: 706px;
+    height:15vh;
+    margin-bottom:-10px; /*Fix for safari gap*/
+    min-height:100px;
+    max-height:150px;
+  }
+
+  /* Animation */
+
+.parallax > use {
+    animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+  }
+  .parallax > use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: 7s;
+  }
+  .parallax > use:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 10s;
+  }
+  .parallax > use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 13s;
+  }
+  .parallax > use:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 20s;
+  }
+  @keyframes move-forever {
+    0% {
+     transform: translate3d(-90px,0,0);
+    }
+    100% { 
+      transform: translate3d(85px,0,0);
+    }
+  }
+
+  .content-flex { /*Flexbox for containers*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position:relative;
+    height:20vh;
+    text-align:center;
+    background-color: white;
+  }
+
+
+
+
+
+
+
+  /* PAGE AFTER LOGIN PAGE AFTER LOGIN PAGE AFTER LOGIN PAGE AFTER LOGIN PAGE AFTER LOGIN PAGE AFTER LOGIN PAGE AFTER LOGIN  */
+
+  /* Main */
+  .aftr-log-main,
+  .table-page-main{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin: 0 10%;
+    justify-content: center;
+    margin-bottom: 70px;
+  }
+
+  /* LEFT SIDE */
+  .left-div{
+    margin-top: 5%;
+    width: 20%;
+    background-color: #ffffff;
+    min-width: 150px;
+    min-height: 769px;
+    box-shadow: 1px 1px 5px #000;
+  }
+
+  .links-ul{
+    margin: 0 10px;
+  }
+
+  .links-li{
+    margin: 10px 0;
+    padding: 5px;
+    
+  }
+
+  .links-btn{
+    min-width: 100%;
+    min-height: 100%;
+    border: none;
+    padding: 10px;
+  }
+
+  .links-btn:hover,
+  .create-new-table-btn:hover,
+  .search-tables-btn:hover,
+  .search-users-btn:hover,
+  .delete-friend:hover,
+  .add-friend:hover,
+  .table-page-head-menu-button:hover{
+      background-color: #E1E1E1;
+  }
+
+
+  /* RIGHT SIDE */
+  /* TABLES */
+  .right-div-tables,
+  .right-div-friends{
+    margin-top: 5%;
+    width: 60%;
+    min-height: 790px;
+    max-height: 690px;
+    min-width: 600px;
+    background-color: #ffffff;
+    box-shadow: 1px 1px 5px #000;
+    overflow-x:hidden;
+  }
+
+  .tables-title-div{
+    display: flex;
+    flex-flow: row wrap;
+    min-height: 90px;
+  }
+
+  .tables-title{
+    padding-left: 20px; 
+    padding-top:14px; 
+  }
+
+  .create-new-table-btn,
+  .table-page-head-menu-button{
+    margin-left: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: none;
+  }
+
+  .tables-header, 
+  .friends-header{
+    min-width: 600px;
+    min-height: 90px;
+    border-top-style:groove;
+    border-bottom-style:groove;
+  }
+
+  .tables-header-ul,
+  .friends-header-ul{
+    padding-left: 15px;
+    padding-top: 13px;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .tables-header-li,
+  .friends-header-li{
+    vertical-align: middle; 
+    padding-left: 10px;
+    display: flex;
+    flex-direction: row;
+  }
+  
+
+  .search-input{
+    padding: 10px;
+    margin-top: 8px;
+    margin-left: 20px;
+    height: 20px;
+    font-size: 22px;
+  }
+  
+  .search-tables-btn,
+  .search-users-btn{
+      height: 44px;
+      margin-top: 7.5px;
+      margin-left: 5px;
+      border: none;
+  }
+
+  .tables-list,
+  .friend-list{
+    padding-left: 15px;
+    padding-right: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+
+  .table-cart{
+      margin: 10px;
+      min-width: 200px;
+      min-height: 200px;
+      max-width: 200px;
+      max-height: 200px;
+      background-color: #E1E1E1;
+      overflow-x:hidden;
+  }
+
+  .table-cart:hover{
+    background-color: #ffffff;
+    box-shadow: 1px 1px 5px #000;
+  }
+  
+  .table-name-h2{
+    word-break: break-word;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  /* FRIENDS */
+.right-div-friends{
+    box-shadow: 1px 1px 5px #000;
+    display: none;
+}
+
+.friend-list{
+
+}
+
+.friend{
+    padding: 20px;
+    display: flex;
+    flex-direction:column;
+    border-style:groove;
+    max-width: 100px;
+    min-width: 100px;
+    max-height: 100px;
+    min-height: 100px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 10px;
+    border-radius: 10%;
+}
+
+.friend-name{
+
+}
+
+.delete-friend,
+.add-friend{
+    height: 50px;
+    min-width: 100%;
+    font-size: 22px;
+    border: none;
+    border-radius: 20px;
+}
+
+
+
+
+
+
+
+
+
+/* Choosen table  */
+
+.table-page-main{
+    margin: 0;
+    padding: 0;
+    min-width: 100%;
+    min-height: 700px;
+    background-color: #ffffff;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    overflow-y:hidden;
+}
+
+.table-page-main::-webkit-scrollbar-track
+{
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #E1E1E1;
+}
+
+.table-page-main::-webkit-scrollbar {
+    width: 10px;
+    background: rgb(148, 123, 123);
+}
+
+.table-page-main::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: #969494;
+}
+
+.work-space{
+    min-width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.column-ul{
+    min-height: 92%;
+    max-height: 700px;
+    min-width: 220px;
+    max-width: 220px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 1px 1px 5px #000;
+    overflow-y:auto;
+    word-wrap: break-word;
+}
+
+.column-name-li{
+    background-color: #E1E1E1;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 49px;
+    max-height: 49px;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    position: sticky;
+    top: 0;
+    border: none;
+}
+
+.column-name-li:hover{
+    color: grey;
+}
+
+.column-name-h2{
+    font-size: 22px;
+    font-weight: 100;
+    margin-left: 10px;
+}
+
+.ticket-li{
+    margin: 10px;
+    min-height: 100px;
+    max-height: 100px;
+    min-width: 200px;
+    max-width: 200px;
+    background-color: #ffffff;
+    box-shadow: 0.5px 0.5px 2.5px #000;
+    overflow-y:hidden;
+    word-wrap: break-word;
+    border: none;
+}
+
+.ticket-li:hover{
+    background-color: #E1E1E1;
+    box-shadow: 1px 1px 5px #000;
+}
+
+.ticket-name-div,
+.ticket-users-div{
+    margin-left: 5px;
+    max-height: 40px;
+    overflow-y:hidden;
+    word-wrap: break-word;
+}
+
+.table-page-head-menu{
+    min-width: 100%;
+    margin: 0;
+    padding: 0;
+    margin-top: 40px;
+    height: 100px;
+    background-color: #ffffff;
+}
+
+.table-page-head-menu-button-list{
+    display: flex;
+    flex-direction: row;
+}
+
+.table-page-head-menu-button{
+    padding: 35.3px 16px;
+    cursor: pointer;
+    font-size: 22px;
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ADMINISTRATION PAGE*/
+
+.admin-main{
+    background-color: #ffffff;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+/*FOR SEARCH*/
+.hidden {
+    display: none;
+  }
+
+
+
+/* TICKET PAGE STYLES */
+
+.ticket-main-div{
+    margin-top: 45px;
+    background-color: #ffffff;
+    padding: 50px;
+}
+
+.ticket-info-div{
+    display: flex;
+    flex-direction: row;
+}
+
+
+/* TABLE STYLES */
+
+
+.table-for-users-tbl{
+    border-spacing: 0 10px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: hidden;
+    max-height: 200px;
+    word-wrap: break-word;
+}
+
+.table-for-users-tr{
+
+}
+
+.table-for-users-th{
+    padding: 10px 20px;
+    background: rgb(212, 212, 212);
+    color: #000000;
+    border-right: 2px solid; 
+    font-size: 0.9em;
+}
+
+.table-for-users-td{
+    vertical-align: middle;
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+    border-top: 2px solid #56433D;
+    border-bottom: 2px solid #56433D;
+    border-right: 2px solid #56433D;
+}

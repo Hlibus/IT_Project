@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link th:href="@{tempates/css/styles.css}" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Головна</title>
+</head>
+<body>
+    
+    <!-- SELECT LANGUAGE INTERFACE MODAL BLOCK -->
+    <div id="lngModal" class="lng-modal">
+    
+        <div class="lng-modal-content">
+            <div class="lng-modal-header">
+                <span onclick="setDisplayNone('lngModal')" class="close">&times;</span>
+                <h2>Змінити мову</h2>
+            </div>
+            <div class="lng-modal-body">
+                <div class="model-lng-btn-group">
+                    <button class="model-lng-btn"><h1 class="model-lng-btn-txt">Англійська</h1></button>
+                    <button class="model-lng-btn"><h1 class="model-lng-btn-txt">Українська</h1></button>
+                </div>
+            </div>
+        </div>
+    
+    </div>
+
+    <!-- HEADER BLOCK -->
+    <header class="header-reg-aut">
+        <div class="top-panel-div">
+            <ul class="top-panel-ul">
+                <li class="top-panel-li">
+                    <!-- <button class="top-panel-btn"><h1 class="top-panel-h1">Головна</h1></button> -->
+                </li>
+            </ul>
+        </div>
+        <div class="header-btn-div-main-right">
+            <button class="user-menu-btn">Налаштування</button>
+            <button class="lng-btn" onclick="setDisplayBlock('lngModal')"><i class="fa fa-language" aria-hidden="true"></i></button>
+            <a th:href="@{'/'}" class="user-menu-btn" style="text-decoration: none;">Вихід</a>
+        </div>
+    </header>
+
+
+    <!-- ADD NEW TABLE MODAL BLOCK -->
+    <form th:method="POST" th:action="@{'/page_after_login/'+ ${userId} }" th:object="${newTable}">
+        <div id="addTableModal" class="add-modal">
+            <div class="add-modal-content">
+                <div class="add-modal-head">
+                    <span onclick="setDisplayNone('addTableModal')" class="close">&times;</span>
+                    <h2 style="margin-left:auto;">Додати нову таблицю</h2>
+                </div>
+                <hr>
+                <div class="add-modal-fields">
+                    <ul class="add-modal-name-group">
+                        <li class="add-modal-name-element">
+                            name
+                        </li>
+                    </ul>
+                    <ul class="add-modal-field-group">
+                        <li class="add-modal-field-element">
+                            <input type="text" class="input-fields" name="name">
+                        </li>
+                    </ul>
+                </div>
+                <hr>
+                <div class="add-modal-btns">
+                    <button onclick="setDisplayNone('addTableModal')" class="add-btn" type="button">
+                        Відміна
+                    </button>
+                    <button class="add-btn" type="submit">
+                        Створити
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+    <div class="aftr-log-main">
+        <div class="left-div">
+            <ul class="links-ul">
+                <li class="links-li"><button onclick="setDisplayBlock('tables'); setDisplayNone('friends');setDisplayNone('users')" class="links-btn"><h3 class="link-h">Дошки</h3></button></li>
+                <li class="links-li"><button onclick="setDisplayBlock('friends'); setDisplayNone('tables');setDisplayNone('users')" class="links-btn"><h3 class="link-h">Друзі</h3></button></li>
+                <li class="links-li"><button onclick="setDisplayBlock('users'); setDisplayNone('friends');setDisplayNone('tables')" class="links-btn"><h3 class="link-h">Додати друга</h3></button></li>
+            </ul>
+        </div>
+        <div class="right-div-tables" id="tables">
+            <div class="tables-title-div">
+                <h2 class="tables-title">Ваші таблиці</h2>
+                <button class="create-new-table-btn" onclick="setDisplayBlock('addTableModal')"><h3>Створити нову таблицю</h3></button>
+            </div>
+            <div class="tables-header">
+                <ul class="tables-header-ul">
+                    <li class="tables-header-li">
+                        <h3>Пошук</h3>
+                    </li>
+                    <li class="tables-header-li">
+                        <input class="search-input" type="text" id="tableSearch" pattern="[^'\x22]+" title="Invalid input">
+                    </li>
+                    <li class="tables-header-li">
+                        
+                    </li>
+                </ul>
+            </div>
+
+            <div class="tables-list" >
+                <div th:each="table : ${tabless}" id="table">
+                    <a style="text-decoration: none; color: #666;" th:href="@{'/table_page/' + ${userId} +'/'+ ${table.tableId}}">
+                        <div class="table-cart">
+                            <h2 class="table-name-h2" th:text="${table.name}"></h2>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="right-div-friends" id="friends">
+            <div class="tables-title-div">
+                <h2 class="tables-title">Друзі</h2>
+            </div>
+            <div class="friends-header">
+                <ul class="friends-header-ul">
+                    <li class="friends-header-li">
+                        <h3>Знайти друга</h3>
+                    </li>
+                    <li class="friends-header-li">
+                        <input class="search-input" type="text" id="friendsSearch" oninput="userSearch('friend')"
+                               pattern="[^'\x22]+" title="Invalid input">
+                    </li>
+                    <li class="friends-header-li">
+                        
+                    </li>
+                </ul>
+            </div>
+            <ul class="friend-list" id="friendList">
+                <div th:each="friend : ${friends}">
+                    <li class="friend" id="friend">
+                        <h2 class="friend-name" th:text="${friend.nickName}" id="friendName">Нікнейм</h2>
+                        <a th:href="@{'/page_after_login/'+ ${userId}+'/'+${friend.userId}+'/deleteFriend' }">
+                            <button class="delete-friend" id="deleteBtn">Видалити</button>
+                        </a>
+                    </li>
+                </div>
+            </ul>
+        </div>
+        <div class="right-div-friends" id="users">
+            <div class="tables-title-div">
+                <h2 class="tables-title">Додавання користувача</h2>
+            </div>
+            <div class="friends-header">
+                <ul class="friends-header-ul">
+                    <li class="friends-header-li">
+                        <h3>Знайти користувача</h3>
+                    </li>
+                    <li class="friends-header-li">
+                        <input class="search-input" type="text" name="" id="usersSearch"
+                               pattern="[^'\x22]+" title="Invalid input">
+                    </li>
+                    <li class="friends-header-li">
+                        
+                    </li>
+                </ul>
+            </div>
+            <ul class="friend-list" >
+                <div th:each="user : ${users}">
+                    <li class="friend" id="user">
+                        <h2 class="friend-name" th:text="${user.nickName}">Нікнейм</h2>
+                        <a th:href="@{'/page_after_login/'+ ${userId}+'/'+${user.userId}+'/addNewFriend' }">
+                            <button class="add-friend" id="addBtn">Додати</button>
+                        </a>
+                    </li>
+                </div>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+
+        <!--Waves Container-->
+        <div>
+            <svg class="waves"
+                viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+                <defs>
+                    <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+                </defs>
+                <g class="parallax">
+                    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(75,126,245,0.7" />
+                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                    <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+                </g>
+            </svg>
+        </div>
+        <!--Waves end-->
+
+        <div class="content-flex">
+            <p>Diplom 2022 | By Gleb Parkhomenko </p>
+        </div>
+        
+    </footer>
+    <script type="text/javascript" th:src="@{templates/js/script.js}"> </script>
+    <script src="js/script.js"></script>
+
+<style>
+    body{
+    background-color: #E1E1E1;
+    font-family: 'Montserrat';
+    font-style: normal;
+}
+
+li {
+    list-style-type: none;
+}
+  
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: rgba(255, 255, 255, 0.0);
+  }
+
+
+
+/* HEADER HEADER HEADER HEADER HEADER HEADER HEADER HEADER HEADER HEADER HEADER HEADER HEADER HEADER HEADER HEADER  */
+
+.header-reg-aut{
+    margin: 0;
+    background-color: #ffffff;
+    height: 109px;
+    width: 100%;
+    min-width: 706px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: row;
+}
+
+.top-panel-div{
+    width: 70%;
+}
+
+.top-panel-ul{
+    display: flex;
+    flex-direction: row;
+}
+
+.top-panel-li{
+    margin: 0;
+    padding: 0;
+}
+
+.top-panel-btn{
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    border: none;
+    padding: 28.8px 20px;
+}
+
+.top-panel-btn:hover{
+    background-color: #E1E1E1;
+}
+
+.top-panel-h1{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+/* Кнопка смены языка */
+
+.lng-btn-div-reg-aut{
+    margin-left:calc(100% - 66.3px - 20px);
+}
+
+.header-btn-div-main-right{
+    margin-left:calc(30% - 66.3px - 20px);
+    display: flex;
+    flex-direction: row;
+}
+
+.user-menu-btn{
+    background-color: #ffffff;
+    border: none;
+    color: #4F4F4F;
+    padding: 35.3px 16px;
+    cursor: pointer;
+    font-size: 22px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.user-menu-btn:hover{
+    background-color: #E1E1E1;
+}
+
+.lng-btn {
+    background-color: #ffffff;
+    border: none;
+    color: #4F4F4F;
+    padding: 31.5px 16px;
+    font-size: 40px;
+    cursor: pointer;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Darker background on mouse-over */
+.lng-btn:hover {
+    background-color: #E1E1E1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Главный блок АВТОРИЗАЦИИ*/
+.aut-main{ 
+    margin: auto;
+    margin-top: 160px;
+    margin-bottom: 160px;
+    width: 706px;
+    background-color: #FFFFFF;
+    opacity: 0.7;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* ТИТУЛКА для блока */
+.title{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 39px;
+    padding-top: 11px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.title-aut{
+    margin: 10px 249px 20px 249px;
+}
+
+/* Раздел ВВОДА информации */
+
+.input-main{
+    display: flex;
+    flex-direction: row;
+}
+
+/* Раздел с НАЗВАНИЯМИ полей */
+
+.input-name-div{
+    width: 265px;
+    height: 143px;
+}
+
+.input-txt{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    margin: 0;
+    padding: 0;
+}
+
+.input-txt-li{
+    padding-left: 85px;
+    padding-top: 30px;
+}
+
+/* Раздел ПОЛЕЙ ввода */
+
+.input-fields-div{
+    width: 441px;
+    height: 143px;
+}
+
+.input-fields{
+    margin: 0;
+    width: 305px;
+    height: 40px;
+    box-sizing: border-box;
+    border: 1px solid #000000;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+}
+
+.input-fields-li{
+    padding-top: 19px;
+}
+
+/* Раздел с КНОПКАМИ АВТОРИЗАЦИИ*/
+
+.buttons-div{
+    margin-top: 19px;
+    margin-left: 124px;
+    padding-bottom: 41px;
+}
+
+.button{
+    background-color: #E1E1E1;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    border: none;
+    padding: 13px 32px;
+}
+
+.button:hover{
+    background-color: #ffffff;
+}
+
+.button-aut{
+    margin-top: 31px;
+    margin-left: 173px;
+}
+
+.button-txt{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    margin: 0;
+    padding: 0;
+}
+
+.button-link-txt{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.link{
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    
+}
+
+.link:hover {
+    color: rgb(46, 129, 95);
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+.link:link{
+    color: aqua;
+}
+
+.link-aut{
+    margin: 0;
+    margin-top: 26px;
+    margin-left: 150px;
+}
+
+
+/* Главный блок РЕЄСТРАЦІЇ*/
+.reg-main{ 
+    margin: auto;
+    margin-top: 95px;
+    margin-bottom: 75px;
+    width: 706px;
+    background-color: #FFFFFF;
+    opacity: 0.7;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* РЕЄСТРАЦІЯ РЕЄСТРАЦІЯ РЕЄСТРАЦІЯ РЕЄСТРАЦІЯ РЕЄСТРАЦІЯ РЕЄСТРАЦІЯ РЕЄСТРАЦІЯ РЕЄСТРАЦІЯ  */
+
+.title-reg{
+    margin: 10px 261px 20px 261px;
+}
+
+/* Раздел с КНОПКАМИ РЕЄСТРАЦІЇ*/
+
+.buttons-div{
+    margin-top: 0px;
+    margin-left: 124px;
+    padding-bottom: 41px;
+}
+
+.button-reg{
+    margin-top: 31px;
+    margin-left: 126px;
+}
+
+.link-reg{
+    margin: 0;
+    margin-top: 28px;
+    margin-left: 168px;
+}
+
+/* Раздел с НАЗВАНИЯМИ полей */
+
+.input-name-reg-div{
+    width: 335px;
+    height: 210px;
+}
+
+.input-txt-reg-li{
+    padding-left: 70px;
+    padding-top: 31px;
+}
+
+/* Раздел ПОЛЕЙ ввода */
+
+.input-fields-reg-div{
+    width: 372px;
+    height: 210px;
+}
+
+
+
+
+
+
+
+
+/* ADD NEW COLUMN MODAL DIV (TABLE_PAGE) */
+
+.add-modal{
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 100px; 
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+}
+
+.add-modal-head{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.add-modal-content{
+    position: relative;
+    background-color: #ffffff;
+    margin: auto;
+    padding: 0;
+    border: 0;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    max-width: 600px;
+    min-width: 600px;
+    padding: 10px;
+}
+
+.add-modal-fields{
+    display: flex;
+    flex-direction: row;
+    padding: 50px;
+}
+
+.add-modal-field-element{
+    margin-top: 25px;
+}
+
+.add-modal-name-element{
+    margin-top: 30px;
+    font-size: 26px;
+    width: 210px;
+}
+
+.add-modal-name-group{
+    padding-bottom: 20px;
+}
+
+.add-modal-field-group{
+    margin-left:20px;
+    padding-bottom: 20px;
+}
+
+.add-modal-btns{
+    display: flex;
+    flex-direction: row;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.add-btn{
+    padding: 20px;
+    margin-left: 130px;
+    font-size: 20px;
+}
+
+.edit-btn{
+    padding: 20px;
+    margin-left: 50px;
+    font-size: 20px;
+}
+
+
+/* Модальное окно для смены языка на странице */
+
+.lng-modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+
+}
+
+.lng-modal-content {
+    position: relative;
+    background-color: #ffffff;
+    margin: auto;
+    padding: 0;
+    border: 0;
+    max-width: 500px;
+    min-width: 500px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+
+.close {
+    color: rgb(0, 0, 0);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.lng-modal-header {
+    padding: 12px 26px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    max-width: 500px;
+    min-width: 300px;
+}
+
+.lng-modal-body {
+    max-width: 500px;
+    min-width: 300px;
+    max-height: 360px;
+    min-height: 100px;
+    padding: 20px 46px;
+    padding-bottom: 40px;
+    background-color: #E1E1E1;
+    overflow-x:hidden;
+}
+
+.model-lng-btn{
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 20px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.model-lng-btn-txt{
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.model-lng-btn-group .model-lng-btn{
+    background-color: #ffffff;
+    border: 1px solid;
+    display: inline-block;
+    cursor: pointer;
+    width: 250px;
+    display: block;
+}
+
+.model-lng-btn-group .model-lng-btn:hover {
+    background-color: #E1E1E1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* WAWES WAWES WAWES WAWES WAWES WAWES WAWES WAWES WAWES WAWES WAWES WAWES WAWES WAWES WAWES WAWES WAWES WAWES WAWES WAWES WAWES WAWES  */
+
+.waves {
+    position:relative;
+    width: 100%;
+    min-width: 706px;
+    height:15vh;
+    margin-bottom:-10px; /*Fix for safari gap*/
+    min-height:100px;
+    max-height:150px;
+  }
+
+  /* Animation */
+
+.parallax > use {
+    animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+  }
+  .parallax > use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: 7s;
+  }
+  .parallax > use:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 10s;
+  }
+  .parallax > use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 13s;
+  }
+  .parallax > use:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 20s;
+  }
+  @keyframes move-forever {
+    0% {
+     transform: translate3d(-90px,0,0);
+    }
+    100% { 
+      transform: translate3d(85px,0,0);
+    }
+  }
+
+  .content-flex { /*Flexbox for containers*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position:relative;
+    height:20vh;
+    text-align:center;
+    background-color: white;
+  }
+
+
+
+
+
+
+
+  /* PAGE AFTER LOGIN PAGE AFTER LOGIN PAGE AFTER LOGIN PAGE AFTER LOGIN PAGE AFTER LOGIN PAGE AFTER LOGIN PAGE AFTER LOGIN  */
+
+  /* Main */
+  .aftr-log-main,
+  .table-page-main{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin: 0 10%;
+    justify-content: center;
+    margin-bottom: 70px;
+  }
+
+  /* LEFT SIDE */
+  .left-div{
+    margin-top: 5%;
+    width: 20%;
+    background-color: #ffffff;
+    min-width: 150px;
+    min-height: 769px;
+    box-shadow: 1px 1px 5px #000;
+  }
+
+  .links-ul{
+    margin: 0 10px;
+  }
+
+  .links-li{
+    margin: 10px 0;
+    padding: 5px;
+    
+  }
+
+  .links-btn{
+    min-width: 100%;
+    min-height: 100%;
+    border: none;
+    padding: 10px;
+  }
+
+  .links-btn:hover,
+  .create-new-table-btn:hover,
+  .search-tables-btn:hover,
+  .search-users-btn:hover,
+  .delete-friend:hover,
+  .add-friend:hover,
+  .table-page-head-menu-button:hover{
+      background-color: #E1E1E1;
+  }
+
+
+  /* RIGHT SIDE */
+  /* TABLES */
+  .right-div-tables,
+  .right-div-friends{
+    margin-top: 5%;
+    width: 60%;
+    min-height: 790px;
+    max-height: 690px;
+    min-width: 600px;
+    background-color: #ffffff;
+    box-shadow: 1px 1px 5px #000;
+    overflow-x:hidden;
+  }
+
+  .tables-title-div{
+    display: flex;
+    flex-flow: row wrap;
+    min-height: 90px;
+  }
+
+  .tables-title{
+    padding-left: 20px; 
+    padding-top:14px; 
+  }
+
+  .create-new-table-btn,
+  .table-page-head-menu-button{
+    margin-left: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: none;
+  }
+
+  .tables-header, 
+  .friends-header{
+    min-width: 600px;
+    min-height: 90px;
+    border-top-style:groove;
+    border-bottom-style:groove;
+  }
+
+  .tables-header-ul,
+  .friends-header-ul{
+    padding-left: 15px;
+    padding-top: 13px;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .tables-header-li,
+  .friends-header-li{
+    vertical-align: middle; 
+    padding-left: 10px;
+    display: flex;
+    flex-direction: row;
+  }
+  
+
+  .search-input{
+    padding: 10px;
+    margin-top: 8px;
+    margin-left: 20px;
+    height: 20px;
+    font-size: 22px;
+  }
+  
+  .search-tables-btn,
+  .search-users-btn{
+      height: 44px;
+      margin-top: 7.5px;
+      margin-left: 5px;
+      border: none;
+  }
+
+  .tables-list,
+  .friend-list{
+    padding-left: 15px;
+    padding-right: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+
+  .table-cart{
+      margin: 10px;
+      min-width: 200px;
+      min-height: 200px;
+      max-width: 200px;
+      max-height: 200px;
+      background-color: #E1E1E1;
+      overflow-x:hidden;
+  }
+
+  .table-cart:hover{
+    background-color: #ffffff;
+    box-shadow: 1px 1px 5px #000;
+  }
+  
+  .table-name-h2{
+    word-break: break-word;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  /* FRIENDS */
+.right-div-friends{
+    box-shadow: 1px 1px 5px #000;
+    display: none;
+}
+
+.friend-list{
+
+}
+
+.friend{
+    padding: 20px;
+    display: flex;
+    flex-direction:column;
+    border-style:groove;
+    max-width: 100px;
+    min-width: 100px;
+    max-height: 100px;
+    min-height: 100px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 10px;
+    border-radius: 10%;
+}
+
+.friend-name{
+
+}
+
+.delete-friend,
+.add-friend{
+    height: 50px;
+    min-width: 100%;
+    font-size: 22px;
+    border: none;
+    border-radius: 20px;
+}
+
+
+
+
+
+
+
+
+
+/* Choosen table  */
+
+.table-page-main{
+    margin: 0;
+    padding: 0;
+    min-width: 100%;
+    min-height: 700px;
+    background-color: #ffffff;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    overflow-y:hidden;
+}
+
+.table-page-main::-webkit-scrollbar-track
+{
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #E1E1E1;
+}
+
+.table-page-main::-webkit-scrollbar {
+    width: 10px;
+    background: rgb(148, 123, 123);
+}
+
+.table-page-main::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: #969494;
+}
+
+.work-space{
+    min-width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.column-ul{
+    min-height: 92%;
+    max-height: 700px;
+    min-width: 220px;
+    max-width: 220px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 1px 1px 5px #000;
+    overflow-y:auto;
+    word-wrap: break-word;
+}
+
+.column-name-li{
+    background-color: #E1E1E1;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 49px;
+    max-height: 49px;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    position: sticky;
+    top: 0;
+    border: none;
+}
+
+.column-name-li:hover{
+    color: grey;
+}
+
+.column-name-h2{
+    font-size: 22px;
+    font-weight: 100;
+    margin-left: 10px;
+}
+
+.ticket-li{
+    margin: 10px;
+    min-height: 100px;
+    max-height: 100px;
+    min-width: 200px;
+    max-width: 200px;
+    background-color: #ffffff;
+    box-shadow: 0.5px 0.5px 2.5px #000;
+    overflow-y:hidden;
+    word-wrap: break-word;
+    border: none;
+}
+
+.ticket-li:hover{
+    background-color: #E1E1E1;
+    box-shadow: 1px 1px 5px #000;
+}
+
+.ticket-name-div,
+.ticket-users-div{
+    margin-left: 5px;
+    max-height: 40px;
+    overflow-y:hidden;
+    word-wrap: break-word;
+}
+
+.table-page-head-menu{
+    min-width: 100%;
+    margin: 0;
+    padding: 0;
+    margin-top: 40px;
+    height: 100px;
+    background-color: #ffffff;
+}
+
+.table-page-head-menu-button-list{
+    display: flex;
+    flex-direction: row;
+}
+
+.table-page-head-menu-button{
+    padding: 35.3px 16px;
+    cursor: pointer;
+    font-size: 22px;
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ADMINISTRATION PAGE*/
+
+.admin-main{
+    background-color: #ffffff;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+/*FOR SEARCH*/
+.hidden {
+    display: none;
+  }
+
+</style>
+
+    <script>
+        function setDisplayBlock(string){
+    var div = document.getElementById(string);
+    div.style.display = "block";
+    
+}
+
+function setDisplayNone(string){
+    var div = document.getElementById(string);
+    div.style.display = "none";
+}
+
+document.querySelector('#friendsSearch').oninput = function (){
+
+let val = this.value.trim();
+let elasticItems = document.querySelectorAll('#friend');
+if(val != ''){
+    elasticItems.forEach(function(elem){
+        if(elem.innerText.search(val) == -1){
+            elem.classList.add('hidden');
+        }else {
+            elem.classList.remove('hidden');
+        }
+    });
+}else{
+    elasticItems.forEach(function(elem){
+        elem.classList.remove('hidden');
+    });
+}
+}
+
+document.querySelector('#usersSearch').oninput = function (){
+
+let val = this.value.trim();
+let elasticItems = document.querySelectorAll('#user');
+if(val != ''){
+    elasticItems.forEach(function(elem){
+        if(elem.innerText.search(val) == -1){
+            elem.classList.add('hidden');
+        }else {
+            elem.classList.remove('hidden');
+        }
+    });
+}else{
+    elasticItems.forEach(function(elem){
+        elem.classList.remove('hidden');
+    });
+}
+}
+
+        document.querySelector('#tableSearch').oninput = function (){
+
+            let val = this.value.trim();
+            let elasticItems = document.querySelectorAll('#table');
+            if(val != ''){
+                elasticItems.forEach(function(elem){
+                    if(elem.innerText.search(val) == -1){
+                        elem.classList.add('hidden');
+                    }else {
+                        elem.classList.remove('hidden');
+                    }
+                });
+            }else{
+                elasticItems.forEach(function(elem){
+                    elem.classList.remove('hidden');
+                });
+            }
+        }
+    </script>
+</body>
+</html>
